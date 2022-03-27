@@ -1,12 +1,12 @@
-/*  ÊÖËºBST
-¶ÔÒ»¿Ã³õÊ¼Îª¿ÕµÄ¶þ²æ²éÕÒÊ÷£¨Binary Search Tree, BST£©½øÐÐÈô¸É²åÈë»òÉ¾³ý²Ù×÷£¬ÇëÊä³ö×îºóµÄ¶þ²æ²éÕÒÊ÷.
-ÊäÈë¸ñÊ½:
-ÊäÈëµÚÒ»ÐÐÎªÒ»¸öÕûÊý T£¬±íÊ¾²Ù×÷ÊýÄ¿¡£ËæºóTÐÐ£¬Ã¿ÐÐÎªInsert K£¨±íÊ¾²åÈëÕûÊýK£©»òRemove K£¨±íÊ¾É¾³ýÕûÊýK£©¡£T²»³¬¹ý2¡Á10^5£¬Ê÷¸ß²»³¬¹ý10^4¡£
+/*  æ‰‹æ’•BST
+å¯¹ä¸€æ£µåˆå§‹ä¸ºç©ºçš„äºŒå‰æŸ¥æ‰¾æ ‘ï¼ˆBinary Search Tree, BSTï¼‰è¿›è¡Œè‹¥å¹²æ’å…¥æˆ–åˆ é™¤æ“ä½œï¼Œè¯·è¾“å‡ºæœ€åŽçš„äºŒå‰æŸ¥æ‰¾æ ‘.
+è¾“å…¥æ ¼å¼:
+è¾“å…¥ç¬¬ä¸€è¡Œä¸ºä¸€ä¸ªæ•´æ•° Tï¼Œè¡¨ç¤ºæ“ä½œæ•°ç›®ã€‚éšåŽTè¡Œï¼Œæ¯è¡Œä¸ºInsert Kï¼ˆè¡¨ç¤ºæ’å…¥æ•´æ•°Kï¼‰æˆ–Remove Kï¼ˆè¡¨ç¤ºåˆ é™¤æ•´æ•°Kï¼‰ã€‚Tä¸è¶…è¿‡2Ã—10^5ï¼Œæ ‘é«˜ä¸è¶…è¿‡10^4ã€‚
 
-Êä³ö¸ñÊ½:
-Êä³ö¾­ÉÏÊö²Ù×÷ºóµÃµ½µÄ¶þ²æ²éÕÒÊ÷µÄÖÐ¸ùÐòÁÐºÍÏÈ¸ùÐòÁÐ£¬ÐòÁÐÖÐÃ¿¸öÕûÊýºóÒ»¸ö¿Õ¸ñ£¬Á½¸öÐòÁÐÖ®¼äÓÃ¿ÕÐÐ¼ä¸ô¡£
+è¾“å‡ºæ ¼å¼:
+è¾“å‡ºç»ä¸Šè¿°æ“ä½œåŽå¾—åˆ°çš„äºŒå‰æŸ¥æ‰¾æ ‘çš„ä¸­æ ¹åºåˆ—å’Œå…ˆæ ¹åºåˆ—ï¼Œåºåˆ—ä¸­æ¯ä¸ªæ•´æ•°åŽä¸€ä¸ªç©ºæ ¼ï¼Œä¸¤ä¸ªåºåˆ—ä¹‹é—´ç”¨ç©ºè¡Œé—´éš”ã€‚
 
-ÊäÈëÑùÀý:
+è¾“å…¥æ ·ä¾‹:
 16
 Insert 17
 Insert 31
@@ -24,7 +24,7 @@ Insert 27
 Insert 9
 Remove 17
 Remove 13
-Êä³öÑùÀý:
+è¾“å‡ºæ ·ä¾‹:
 4 8 9 11 20 24 25 27 31 35 40
 
 20 11 8 4 9 31 25 24 27 35 40
@@ -41,7 +41,7 @@ struct BSTNode
 
 BSTNode* root = NULL;
 
-bool insertInBST(BSTNode*& root, int key)   //ÔÚÒÔrootÎª¸ùµÄBSTÖÐ²åÈëkey£¬³É¹¦·µ»Øtrue£¬·ñÔòfalse
+bool insertInBST(BSTNode*& root, int key)   //åœ¨ä»¥rootä¸ºæ ¹çš„BSTä¸­æ’å…¥keyï¼ŒæˆåŠŸè¿”å›žtrueï¼Œå¦åˆ™false
 {
     if (!root){
         root = new BSTNode;
@@ -64,23 +64,23 @@ bool insertInBST(BSTNode*& root, int key)   //ÔÚÒÔrootÎª¸ùµÄBSTÖÐ²åÈëkey£¬³É¹¦·µ
 
 bool deleteInBST(BSTNode*& root, int key)
 {
-    if (!root){ //µÝ¹é³ö¿Ú£¬Ä¿±ê²»´æÔÚ£¬É¾³ýÊ§°Ü
+    if (!root){ //é€’å½’å‡ºå£ï¼Œç›®æ ‡ä¸å­˜åœ¨ï¼Œåˆ é™¤å¤±è´¥
         return false;
     }
-    if (key == root->key){  //µÝ¹é³ö¿Ú£¬ÕÒµ½Ä¿±ê£¬½øÐÐÉ¾³ý
-        if (root->left == NULL && root->right == NULL){ //½áµãÎªÒ¶½áµã
+    if (key == root->key){  //é€’å½’å‡ºå£ï¼Œæ‰¾åˆ°ç›®æ ‡ï¼Œè¿›è¡Œåˆ é™¤
+        if (root->left == NULL && root->right == NULL){ //ç»“ç‚¹ä¸ºå¶ç»“ç‚¹
             delete root;
             root = NULL;
         }
-        else if (root->left != NULL && root->right != NULL){ //½áµãÓÐÁ½×ÓÊ÷
+        else if (root->left != NULL && root->right != NULL){ //ç»“ç‚¹æœ‰ä¸¤å­æ ‘
             BSTNode* p = root->right;
-            while (p->left){    //ÕÒÓÒ×ÓÊ÷ÖÐ×îÐ¡½áµã
+            while (p->left){    //æ‰¾å³å­æ ‘ä¸­æœ€å°ç»“ç‚¹
                 p = p->left;
             }
             root->key = p->key;
-            deleteInBST(root->right, p->key);    //´ËÉ¾³ýÒ»¶¨³É¹¦
+            deleteInBST(root->right, p->key);    //æ­¤åˆ é™¤ä¸€å®šæˆåŠŸ
         }
-        else{   //½áµãÓÐÒ»×ÓÊ÷
+        else{   //ç»“ç‚¹æœ‰ä¸€å­æ ‘
             BSTNode* p = root;
             if (root->left){
                 root = root->left;
